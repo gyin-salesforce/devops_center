@@ -13,12 +13,14 @@ jobs:
         node-version: '10.x'
 
     - name: Install Salesforce CLI
-      run: npm install sfdx-cli -g
-      run: sfdx --version
-      run: sfdx plugins --core
+      run: |
+        npm install sfdx-cli -g
+        sfdx --version
+        sfdx plugins --core
       
     - name: Authenticate sandbox
-      run: sfdx force:auth:sfdxurl:store -f ${{ secrets.PORTALVALI_URL }} -s -a PortalVali
+      run: |
+        sfdx force:auth:sfdxurl:store -f ${{ secrets.PORTALVALI_URL }} -s -a PortalVali
 
     - name: Deploy source
       run: sfdx force:source:deploy -p force-app -u PortalVali -c -t
