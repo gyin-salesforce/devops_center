@@ -1,7 +1,8 @@
 #.github/workflows/Portal_Dev.yml
 name: Pull Request Validate
-on: pull_request:
-      branches: "Portal_Dev"
+on: 
+  pull_request:
+      branches: [Portal_Dev]
 
 jobs:
   build:
