@@ -20,7 +20,8 @@ jobs:
       
     - name: Authenticate sandbox
       run: |
-        sfdx force:auth:sfdxurl:store -f ${{ secrets.PORTALVALI_URL }} -s -a PortalVali
+        echo ${{ secrets.PORTALVALI_URL }} > /tmp/sfdx.url
+        sfdx force:auth:sfdxurl:store -f /tmp/sfdx.url -s -a PortalVali
 
     - name: Deploy source
       run: sfdx force:source:deploy -p force-app -u PortalVali -c -t
