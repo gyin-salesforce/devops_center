@@ -1,6 +1,7 @@
 #.github/workflows/Portal_Dev.yml
 name: Pull Request Validate
-on: pull_request
+on: pull_request:
+      branches: "Portal_Dev"
 
 jobs:
   build:
@@ -23,7 +24,7 @@ jobs:
         echo ${{ secrets.PORTALVALI_URL }} > /tmp/sfdx.url
         sfdx force:auth:sfdxurl:store -f /tmp/sfdx.url -s -a PortalVali
 
-    - name: Deploy source
+    - name: Validate source
       run: sfdx force:source:deploy -p force-app -u PortalVali -c 
 
     - name: Run Apex test
