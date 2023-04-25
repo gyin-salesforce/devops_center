@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>What: Grants access to custom platform apps and functionality. Who: Jesse Chase. When: Sept, 2021.</description>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Link__c.Description__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Link__c.URL__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Link__c.Who__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Link__c.Work__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Platform - Base Access</label>
+    <pageAccesses>
+        <apexPage>SDO_Platform_TMcTwitterFeedVF</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+</PermissionSet>
