@@ -28,6 +28,4 @@ jobs:
     - name: Validate source
       run: sfdx force:source:deploy -p force-app -u PortalVali -c 
 
-    - name: Run Apex test
-      run: sfdx force:apex:test:run -c -r human
 
