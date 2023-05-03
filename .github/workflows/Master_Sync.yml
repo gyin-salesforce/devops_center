@@ -1,7 +1,7 @@
 #.github/workflows/Master_Sync.yml
 name: Master sync 
 on: 
-  pull_request:
+  push:
       branches: [main]
 
 jobs:
@@ -15,10 +15,10 @@ jobs:
         node-version: '14.x'
 
     - name: Create pull request from bugfix/hotfix to portal project
-      run: run: gh pr create -B Portal_Dev -H main --title 'Merge hotfix/bugfix into Portal_Dev' --body 'Created by Github action'
+      run: gh pr create -B Portal_Dev -H main --title 'Merge hotfix/bugfix into Portal_Dev' --body 'Created by Github action'
 
     - name: Create pull request from bugfix/hotfix to MDM project
-      run: run: gh pr create -B MDM_Dev -H main --title 'Merge hotfix/bugfix into MDM_Dev' --body 'Created by Github action'
+      run: gh pr create -B MDM_Dev -H main --title 'Merge hotfix/bugfix into MDM_Dev' --body 'Created by Github action'
 
     - name: Create pull request from bugfix/hotfix to Maps project
-      run: run: gh pr create -B Maps_Dev -H main --title 'Merge hotfix/bugfix into Maps_Dev' --body 'Created by Github action'
+      run: gh pr create -B Maps_Dev -H main --title 'Merge hotfix/bugfix into Maps_Dev' --body 'Created by Github action'
