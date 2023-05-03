@@ -16,9 +16,15 @@ jobs:
 
     - name: Create pull request from bugfix/hotfix to portal project
       run: gh pr create -B Portal_Dev -H main --title 'Merge hotfix/bugfix into Portal_Dev' --body 'Created by Github action'
+      env:
+          GITHUB_TOKEN: ${{ secrets.CLI_TOKEN }}
 
     - name: Create pull request from bugfix/hotfix to MDM project
       run: gh pr create -B MDM_Dev -H main --title 'Merge hotfix/bugfix into MDM_Dev' --body 'Created by Github action'
+      env:
+          GITHUB_TOKEN: ${{ secrets.CLI_TOKEN }}
 
     - name: Create pull request from bugfix/hotfix to Maps project
       run: gh pr create -B Maps_Dev -H main --title 'Merge hotfix/bugfix into Maps_Dev' --body 'Created by Github action'
+      env:
+          GITHUB_TOKEN: ${{ secrets.CLI_TOKEN }}
