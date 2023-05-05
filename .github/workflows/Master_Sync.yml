@@ -8,11 +8,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-      if: github.event.action == 'opened' || github.event.action == 'synchronize'
-    - uses: actions/setup-node@v1
-      with:
-        node-version: '14.x'
+    - name: Check out repository code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          ref: main
 
     - name: Create pull request from bugfix/hotfix to portal project
       run: gh pr create -B Portal_Dev -H main --title 'Merge hotfix/bugfix into Portal_Dev' --body 'Created by Github action'
