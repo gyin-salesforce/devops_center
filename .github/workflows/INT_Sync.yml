@@ -1,0 +1,25 @@
+#.github/workflows/INT_Sync.yml
+name: INT sync project
+on: 
+  push:
+      branches: [Integration]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out repository code
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+        ref: Integration
+
+    - name: Create pull request from INT to MDM project
+      run: gh pr create -B MDM_Dev -H Integration --title 'Merge Integration into MDM_Dev' --body 'Created by Github action'
+      env:
+          GITHUB_TOKEN: ${{ secrets.CLI_TOKEN }}
+
+    - name: Create pull request from INT to Maps project
+      run: gh pr create -B Maps_Dev -H Integration --title 'Merge Integration into Maps_Dev' --body 'Created by Github action'
+      env:
+          GITHUB_TOKEN: ${{ secrets.CLI_TOKEN }}
