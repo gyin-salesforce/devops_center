@@ -9,10 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Check out repository code
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-          ref: Integration
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+        ref: Integration
 
     - name: Create pull request from INT to MDM project
       run: gh pr create -B MDM_Dev -H Integration --title 'Merge Integration into MDM_Dev' --body 'Created by Github action'
