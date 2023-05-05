@@ -86,6 +86,10 @@
                 <behavior>Edit</behavior>
                 <field>testfield__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>test0504__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
