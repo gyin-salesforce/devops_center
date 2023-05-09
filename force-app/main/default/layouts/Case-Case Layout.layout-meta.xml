@@ -84,7 +84,11 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>testfield__c</field>
+                <field>test0504__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>DemoDevOpsCheckin__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>

@@ -1,0 +1,49 @@
+#.github/workflows/Portal_Dev.yml
+name: Pull Request Validate
+on: 
+  pull_request:
+      branches: [Portal_Dev]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+      if: github.event.action == 'opened' || github.event.action == 'synchronize'
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '14.x'
+
+    - name: Install Salesforce CLI
+      run: |
+        npm install sfdx-cli -g
+        sfdx --version
+        sfdx plugins --core
+      
+    - name: Authenticate sandbox
+      run: |
+        echo ${{ secrets.PORTALVALI_URL }} > /tmp/sfdx.url
+        sfdx force:auth:sfdxurl:store -f /tmp/sfdx.url -s -a PortalVali
+
+    - name: 'Installing SFDX scanner'
+      run: sfdx plugins:install @salesforce/sfdx-scanner
+
+    - name: 'Scan code'
+      run: |
+          mkdir Scanresult
+          cd Scanresult
+          sfdx scanner:run --format sarif --target './**/*.cls' --category "Design,Best Practices,Performance" --outfile 'apexScanResults.sarif'
+          cd ..  
+            
+    - name: Upload SARIF file
+      uses: github/codeql-action/upload-sarif@v2
+      with:
+        sarif_file: Scanresult/apexScanResults.sarif
+
+
+
+    #- name: Validate source
+      #run: sfdx force:source:deploy -p force-app -u PortalVali -c 
+
+    #- name: Run Apex test
+      #run: sfdx force:apex:test:run -c -r human
